@@ -1,0 +1,7 @@
+# Feishu OpenCode Bridge Dependencies
+# Install with: pip install -r requirements.txt
+
+# Feishu SDK (official)
+lark-oapi>=1.3.0
+
+# Note: Python 3.8+ is required

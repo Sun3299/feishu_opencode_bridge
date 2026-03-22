@@ -1,0 +1,35 @@
+# -*- coding: utf-8 -*-
+"""
+配置模板 - 请复制为 config.py 并填写实际值
+"""
+import os
+
+# ============== 必填配置 ==============
+
+# 飞书应用的 App ID
+# 获取方式: 飞书开放平台 -> 应用详情 -> 凭证与基础信息
+APP_ID = "YOUR_APP_ID"
+
+# 飞书应用的 App Secret
+# 获取方式: 飞书开放平台 -> 应用详情 -> 凭证与基础信息
+APP_SECRET = "YOUR_APP_SECRET"
+
+# OpenCode CLI 路径
+# 如果 opencode 已加入 PATH，可直接写 "opencode"
+# Windows 示例: r"C:\Users\YourName\AppData\Roaming\npm\opencode.cmd"
+# Linux/Mac 示例: "/usr/local/bin/opencode"
+OPENCOD_BIN = "opencode"
+
+# OpenCode 模型
+MODEL = "opencode/minimax-m2.5-free"
+
+# ============== 可选配置 ==============
+
+# 飞书机器人名称（用于日志显示）
+BOT_NAME = "Feishu-OpenCode Bridge"
+
+# OpenCode 服务端口（默认 4096）
+OPENCOD_PORT = 4096
+
+# 是否启用日志文件
+ENABLE_LOG = True
