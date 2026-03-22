@@ -1,162 +1,122 @@
 # Feishu OpenCode Bridge
 
-🔗 A relay service that forwards Feishu (Lark) messages to OpenCode AI and returns beautifully rendered results.
-
 🇨🇳 [简体中文](./README_zh.md) | 🇺🇸 [English](./README.md)
 
 ---
 
-## ✨ Features
+## 🎯 What Does It Solve?
 
-### Core Functionality
+Tired of complex bot configuration?
 
-- **Message Forwarding** - Automatically forwards Feishu private messages to OpenCode
-- **Markdown Rendering** - Uses Feishu interactive cards with full Markdown support (code blocks, bold, italic, etc.)
-- **Message Queue** - Serial processing to maintain message order
-- **Single Instance Protection** - Prevents multiple instances from running
-- **Logging System** - Dual output to console and log file
-
-### Technical Highlights
-
-- Asynchronous message processing without blocking WebSocket
-- Automatic ANSI color code cleanup
-- Smart text formatting for Feishu display
-- Interactive command-line menu for easy management
+**Feishu OpenCode Bridge** runs with a **single double-click** — no complicated setup required, as simple as using OpenClaw.
 
 ---
 
-## 🚀 Quick Start
+## ✨ Why Choose It?
 
-### Requirements
+| Comparison | Traditional Solutions | Feishu OpenCode Bridge |
+|------------|----------------------|------------------------|
+| Setup | Requires coding & environment | **Double-click to run** |
+| Files | Multiple complex scripts | **Only 2 files** |
+| Dependencies | Complex environment setup | **pip install only** |
+| Maintenance | Large codebase hard to maintain | **Single file, clean & simple** |
 
-- Python 3.8+
-- [OpenCode CLI](https://github.com/opencode-ai/opencode) (installed and configured)
-- Feishu Enterprise App
+---
 
-### Installation
+## 🚀 Get Started in 5 Minutes
+
+### Step 1: Download & Install Dependencies
 
 ```bash
-# 1. Clone the repository
-git clone https://github.com/Malcolm3299/feishu-opencode-bridge.git
-cd feishu-opencode-bridge
-
-# 2. Install dependencies
+git clone https://github.com/Malcolm3299/feishu_opencode_bridge.git
+cd feishu_opencode_bridge
 pip install -r requirements.txt
-
-# 3. Configure
-cp config.py.example config.py
-# Edit config.py with your Feishu credentials and OpenCode path
-
-# 4. Run
-# Windows
-run.bat
-
-# Linux / Mac
-python3 bridge.py
 ```
+
+### Step 2: Configure
+
+1. Copy `config.py.example` → `config.py`
+2. Fill in your Feishu bot credentials (same as OpenClaw Feishu bot setup)
+3. Set OpenCode path
+
+### Step 3: Run with One Click
+
+```
+Double-click run.bat
+```
+
+**Done!** Send a message to your bot and try it out!
+
+---
+
+## 📸 Demo
+
+### Feishu Chat Interface
+![Feishu Chat](./images/feishu.jpg)
+
+### Code Highlighting Example
+![Code Example](./images/log&example.jpg)
+
+### Run Control Interface
+![Run Control](./images/run_control.jpg)
 
 ---
 
 ## ⚙️ Configuration
 
-Edit `config.py`:
-
 ```python
-# ============== Required ==============
+# Required
+APP_ID = "cli_xxxxx"           # From Feishu Open Platform
+APP_SECRET = "xxxxxxxxxxxxx"    # From Feishu Open Platform
+OPENCOD_BIN = "opencode"       # OpenCode command
 
-# Feishu App Credentials
-APP_ID = "cli_xxxxx"           # Get from Feishu Open Platform
-APP_SECRET = "xxxxxxxxxxxxx"    # Get from Feishu Open Platform
-
-# OpenCode Settings
-OPENCOD_BIN = "opencode"       # or full path
+# Optional
 MODEL = "opencode/minimax-m2.5-free"
-
-# ============== Optional ==============
-
-OPENCOD_PORT = 4096    # OpenCode server port
-ENABLE_LOG = True    # Enable logging
+OPENCOD_PORT = 4096
 ```
 
-### Getting Feishu Credentials
-
-1. Go to [Feishu Open Platform](https://open.feishu.cn/)
-2. Create an Enterprise App
-3. Get App ID and App Secret
-4. Enable Bot capability
-5. Subscribe to message event `im.message.receive_v1`
-
----
-
-## 📖 Usage
-
-### Starting
-
-```bash
-# Windows: Double-click run.bat or run in command line
-python bridge.py
-```
-
-### Interactive Menu
-
-When an existing instance is detected:
-
-```
-============================================================
-  Feishu <-> OpenCode Bridge is already running!
-============================================================
-  Current process PID: 12345
-
-  Choose an option:
-  [1] Kill this process and restart
-  [2] Kill all Python processes and restart
-  [3] Exit
-============================================================
-Enter option (1/2/3):
-```
-
-### Logs
-
-Logs are saved to `bridge.log`.
+> 💡 **Tip**: Feishu bot configuration is identical to [OpenClaw Feishu setup](https://docs.openclaw.ai/) — no extra learning required!
 
 ---
 
 ## 🏗 Project Structure
 
 ```
-feishu-opencode-bridge/
-├── bridge.py           # Main program
-├── config.py.example   # Configuration template
-├── run.bat             # Windows launcher
-├── requirements.txt    # Python dependencies
-├── LICENSE            # MIT License
-└── README_zh.md      # Chinese README
+feishu_opencode_bridge/
+├── bridge.py           # Core program (just this one)
+├── config.py.example   # Config template
+├── run.bat            # Double-click to run
+├── requirements.txt   # Python dependencies
+├── LICENSE          # MIT License
+└── images/         # Demo screenshots
+    ├── feishu.jpg
+    ├── log&example.jpg
+    └── run_control.jpg
 ```
 
 ---
 
 ## ❓ FAQ
 
-**Q: "App not found" error on startup?**
+**Q: Failed to start?**
+A: Make sure Python 3.8+ is installed and you ran `pip install -r requirements.txt`
 
-A: Check if `APP_ID` and `APP_SECRET` in `config.py` are correct.
+**Q: Bot not responding?**
+A: Check if `im.message.receive_v1` event subscription is enabled in Feishu Open Platform
 
 **Q: OpenCode timeout?**
-
-A: Try adjusting `OPENCOD_PORT` or check your network connection.
-
-**Q: How to get Feishu credentials?**
-
-A: Go to [Feishu Open Platform](https://open.feishu.cn/), create an app, and get App ID and App Secret.
+A: Check your network connection or try restarting OpenCode service
 
 ---
 
 ## 📄 License
 
-This project is licensed under the [MIT License](LICENSE).
+[MIT License](./LICENSE)
 
 ---
 
 ## 🤝 Contributing
 
-Issues and Pull Requests are welcome!
+Found a bug? Welcome to submit an [Issue](https://github.com/Malcolm3299/feishu_opencode_bridge/issues)!
+
+Have improvements? Pull Requests are welcome!
